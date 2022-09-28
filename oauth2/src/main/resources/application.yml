@@ -1,15 +1,3 @@
-security:
-  oauth2:
-    client:
-      registration:
-        google:
-          client-id: 298618949209-ppab8f6uht2cv1nj864olmh2gfbalf12.apps.googleusercontent.com
-          client-secret: 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
-#          redirectUri: /oauth2/callback/
-          scope:
-            - email
-            - profile
-
 datasource:
   driver-class-name: org.h2.Driver
   url: jdbc:h2:tcp://localhost/~/test
