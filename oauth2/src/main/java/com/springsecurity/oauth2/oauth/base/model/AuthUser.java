@@ -7,7 +7,7 @@ import javax.persistence.*;
 @Getter
 @NoArgsConstructor
 @Entity
-public class BaseAuthUser extends BaseTimeEntity{
+public class AuthUser extends TimeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,17 +24,17 @@ public class BaseAuthUser extends BaseTimeEntity{
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private BaseAuthRole role;
+    private AuthRole role;
 
     @Builder
-    public BaseAuthUser(String name, String email, String picture, BaseAuthRole role) {
+    public AuthUser(String name, String email, String picture, AuthRole role) {
         this.name = name;
         this.email = email;
         this.picture = picture;
         this.role = role;
     }
 
-    public BaseAuthUser update(String name, String picture) {
+    public AuthUser update(String name, String picture) {
         this.name = name;
         this.picture = picture;
 
