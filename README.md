@@ -22,10 +22,19 @@
 
 - `Role` : 사용자 권한 관리를 위한 Enum 클래스
 
+- `LoginUser` : 어노테이션 클래스<br>
+→ `@interface` : 해당 파일을 어노테이션으로 지정<br>
+→ `@Target()` : 어노테이션이 적용될 수 있는 위치 정의
+
+- `LoginUserArgumentResolver` : `HandlerMethodArgumentResolver` 인터페이스 구현<br>
+  → 컨트롤러 메서드의 특정 파라미터를 지원하는 지 판단 + 파라미터에게 전달할 객체 생성
+
 <br>
 
 ## 보안 관련
 - `SecurityConfig` : 보안 설정
+
+- `WebConfig` : `HandlerMethodArgumentResolver` 인터페이스 추가를 위해 사용
 
 - `CustomOAuth2UserService` : 소셜 로그인 성공 후 가져온 사용자 정보들을 기반으로 User 생성 및 수정, Session에 저장
 
@@ -37,17 +46,22 @@
 
 <br>
 
-### `SessionUser` 를 따로 생성하는 이유
+#### `SessionUser` 를 따로 생성하는 이유
 - Session에 저장하기 위해선 **직렬화**를 해야 한다.
 - User 클래스는 다른 Entity들과 관계가 형성될 수 있는 Entity이기 때문에 User 클래스를 직렬화하면 **성능 이슈와 부수 효과**가 발생할 수 있다.
 - 직렬화 기능을 가진 Session DTO를 추가로 생성해 사용하는 것이 **운영 및 유지 보수**에 편리함
+
 
 <br><br>
 
 # 디렉토리 구조
 ```bash
 ┌── config
-│      └── SecurityConfig
+│      ├── SecurityConfig
+│      ├── WebConfig
+│      └── auth
+│          ├── LoginUser
+│          └── LoginUserArgumentResolver
 ├── controller
 │      └── IndexController
 ├── domain
