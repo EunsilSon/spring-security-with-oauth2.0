@@ -15,6 +15,8 @@
 <br><br>
 
 # 파일 설명
+<img width="1247" alt="OAuth2_소셜로그인_로직" src="https://user-images.githubusercontent.com/46162801/194227700-0685fe4d-78bb-43ab-b6f2-b8e007bd76f5.png">
+
 ## 사용자 관련
 - `User` : 로그인 한 사용자 정보
 
@@ -22,19 +24,23 @@
 
 - `Role` : 사용자 권한 관리를 위한 Enum 클래스
 
+- `UserRepository` : User 테이블 접근 
+
+<br>
+
 - `LoginUser` : 어노테이션 클래스<br>
 → `@interface` : 해당 파일을 어노테이션으로 지정<br>
 → `@Target()` : 어노테이션이 적용될 수 있는 위치 정의
 
 - `LoginUserArgumentResolver` : `HandlerMethodArgumentResolver` 인터페이스 구현<br>
   → 컨트롤러 메서드의 특정 파라미터를 지원하는 지 판단 + 파라미터에게 전달할 객체 생성
+  
+  - `WebConfig` : `HandlerMethodArgumentResolver` 인터페이스 추가를 위해 사용
 
 <br>
 
 ## 보안 관련
 - `SecurityConfig` : 보안 설정
-
-- `WebConfig` : `HandlerMethodArgumentResolver` 인터페이스 추가를 위해 사용
 
 - `CustomOAuth2UserService` : 소셜 로그인 성공 후 가져온 사용자 정보들을 기반으로 User 생성 및 수정, Session에 저장
 
